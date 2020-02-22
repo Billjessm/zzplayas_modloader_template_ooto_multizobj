@@ -26,7 +26,8 @@ class zzplayas implements IPlugin {
   @InjectCore()
   core!: IOOTCore;
 
-  preinit(): void {
+  preinit(): void {}
+  init(): void {
     let zz: zzdata = (this as any)['metadata']['zzplayas'];
     if (!fse.existsSync(zz.config_file)){
       fse.writeFileSync(zz.config_file, JSON.stringify({adult_costume: 0, child_costume: 0} as zzplayas_malon_options, null, 2));
@@ -58,7 +59,6 @@ class zzplayas implements IPlugin {
       bus.emit(OotOnlineEvents.CUSTOM_MODEL_APPLIED_ICON_CHILD, path.resolve(path.join(__dirname, zz.child_icon)));
     }
   }
-  init(): void {}
   postinit(): void {}
   onTick(): void {}
 }
